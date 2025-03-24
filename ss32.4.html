@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="text" type="text" />
+    <br />
+    <br />
+    <button id="btn1">check</button>
+
+    <script>
+      let btn1 = document.getElementById("btn1");
+      let text = document.getElementById("text");
+
+      btn1.onclick = function () {
+        let subject = text.value;
+        if (!subject.includes("@gmail.com") && !subject.includes("@gmail.vn")) {
+          alert("email không hợp lệ !");
+        } else {
+          alert("email hợp lệ !");
+        }
+      };
+    </script>
+  </body>
+</html>

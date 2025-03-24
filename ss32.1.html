@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #bg {
+        border: 1px solid black;
+        width: 200px;
+        height: 100px;
+      }
+
+      #bt1 {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg">
+      <button id="bt1">Đổi màu nền</button>
+    </div>
+
+    <script>
+      let bg = document.getElementById("bg");
+      let bt1 = document.getElementById("bt1");
+
+      bt1.addEventListener("click", () => {
+        let color =
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0");
+        bg.style.background = color;
+      });
+    </script>
+  </body>
+</html>
