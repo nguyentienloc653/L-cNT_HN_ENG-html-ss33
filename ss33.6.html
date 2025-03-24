@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ứng dụng Thời tiết</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f0f4f8;
+      }
+
+      .container {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input,
+      button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      input {
+        width: 70%;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .weather-box {
+        background: #f8fbff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      .weather-content {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .weather-icon img {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+      }
+
+      .weather-temp {
+        font-size: 40px;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .weather-info p {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Ứng dụng Thời tiết</h2>
+      <input type="text" id="cityInput" placeholder="Nhập tên thành phố" />
+      <button onclick="getWeather()">Tìm kiếm</button>
+      <div id="weatherResult"></div>
+    </div>
+
+    <script>
+      const weatherData = {
+        "hà nội": {
+          temperature: 25,
+          humidity: 70,
+          windSpeed: 5,
+          description: "Có mây",
+          icon: "https://cdn-icons-png.flaticon.com/128/1163/1163624.png",
+        },
+        "hồ chí minh": {
+          temperature: 32,
+          humidity: 75,
+          windSpeed: 7,
+          description: "Nắng",
+          icon: "https://cdn-icons-png.flaticon.com/128/869/869869.png",
+        },
+        "đà nẵng": {
+          temperature: 28,
+          humidity: 82,
+          windSpeed: 12,
+          description: "Mưa rào",
+          icon: "https://cdn-icons-png.flaticon.com/128/1163/1163657.png",
+        },
+      };
+
+      function getWeather() {
+        let cityInput = document
+          .getElementById("cityInput")
+          .value.trim()
+          .toLowerCase();
+        let weatherResult = document.getElementById("weatherResult");
+
+        let cityFound = Object.keys(weatherData).find(
+          (city) => city === cityInput
+        );
+
+        if (cityFound) {
+          let data = weatherData[cityFound];
+          weatherResult.innerHTML = `
+                    <div class="weather-box">
+                        <h3>${capitalize(cityFound)}</h3>
+                        <div class="weather-content">
+                            <div class="weather-icon">
+                                <img src="${data.icon}" alt="Weather Icon">
+                            </div>
+                            <div class="weather-temp">${
+                              data.temperature
+                            }°C</div>
+                            <div class="weather-info">
+                                <p>${data.description}</p>
+                                <p>Độ ẩm: ${data.humidity}%</p>
+                                <p>Tốc độ gió: ${data.windSpeed} km/h</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+        } else {
+          weatherResult.innerHTML = `<p class="error">Không tìm thấy thông tin thời tiết cho thành phố này!</p>`;
+        }
+      }
+
+      function capitalize(str) {
+        return str
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+    </script>
+  </body>
+</html>

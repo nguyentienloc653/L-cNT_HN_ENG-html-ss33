@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #pass {
+        border-radius: 5px;
+        border: 1px solid gray;
+        width: 30%;
+        height: 30px;
+        outline: none;
+      }
+      div {
+        position: relative;
+      }
+
+      #icon {
+        position: absolute;
+        left: 230px;
+        top: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="pass" type="password" placeholder="Enter your password" />
+      <span id="icon">👁️</span>
+    </div>
+    <script>
+      let pass = document.getElementById("pass");
+      let icon = document.getElementById("icon");
+
+      if (pass && icon) {
+        icon.addEventListener("click", () => {
+          if (pass.type === "password") {
+            pass.type = "text";
+          } else {
+            pass.type = "password";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

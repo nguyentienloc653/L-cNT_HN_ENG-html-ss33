@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #select {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="select" onchange="getSelectedValue()">
+      <option>--Lựa chọn danh mục--</option>
+      <option id="food">Đồ ăn</option>
+      <option id="beverage">Nước</option>
+      <option id="tool">Dụng cụ</option>
+    </select>
+    <button id="btn">Lọc</button>
+    <br />
+    <ul id="UL"></ul>
+    <script src="./ss33.3.js"></script>
+  </body>
+</html>

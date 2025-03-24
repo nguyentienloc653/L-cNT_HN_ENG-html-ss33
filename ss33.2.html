@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #text {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="text"></textarea><br />
+    <p><span id="numbers">0</span> ký tự</p>
+    <button id="btn1">Kiểm tra</button>
+  </body>
+  <script>
+    let text = document.getElementById("text");
+    let numbers = document.getElementById("numbers");
+    let btn1 = document.getElementById("btn1");
+
+    btn1.addEventListener("click", () => {
+      numbers.textContent = ` ${text.value.length} `;
+    });
+  </script>
+</html>
